@@ -32,8 +32,7 @@ class Post extends Model
         return Post::with('postComments')->find($post_id)->postComments();
     }
 
-    public function likes()
-    {
+    public function likes(){
         return $this->hasMany(Like::class, 'like_post_id');
     }
 }
