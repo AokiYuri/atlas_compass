@@ -5,11 +5,16 @@
   <div class="post_create_area border w-50 m-5 p-5">
     <div class="">
       <p class="mb-0">カテゴリー</p>
-      <select class="w-100" form="postCreate" name="post_category_id">
+      <select class="w-100" form="postCreate" name="sub_category_id">
         @foreach($main_categories as $main_category)
-        <optgroup label="{{ $main_category->main_category }}"></optgroup>
-        <!-- サブカテゴリー表示 -->
-        </optgroup>
+          <optgroup label="{{ $main_category->main_category }}">
+            <!-- サブカテゴリー表示 -->
+            @foreach($sub_categories as $sub_category)
+              @if($sub_category->main_category_id === $main_category->id)
+              <option value="{{ $sub_category->id }}">{{ $sub_category->sub_category }}</option>
+              @endif
+            @endforeach
+          </optgroup>
         @endforeach
       </select>
     </div>
@@ -39,9 +44,24 @@
         <p class="m-0">メインカテゴリー</p>
         <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
+        <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
       </div>
       <!-- サブカテゴリー追加 -->
-      <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
+      <p class="m-0">サブカテゴリー</p>
+      <!-- バリデーションのエラー表示 -->
+         @foreach ($errors->all() as $error)
+         <li>{{$error}}</li>
+         @endforeach
+      <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">
+        {{ csrf_field() }}
+        <select name="main_category_id" class="w-100">
+        @foreach($main_categories as $main_category)
+        <option value="{{ $main_category->id }}">{{ $main_category->main_category }}</option>
+        @endforeach
+        </select>
+        <input type="text" class="w-100" name="sub_category_name">
+        <input type="submit" value="追加" class="w-100 btn btn-primary p-0">
+      </form>
     </div>
   </div>
   @endcan

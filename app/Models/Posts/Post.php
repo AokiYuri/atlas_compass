@@ -13,6 +13,7 @@ class Post extends Model
         'user_id',
         'post_title',
         'post',
+        'sub_category_id',
     ];
 
     public function user(){
@@ -25,6 +26,7 @@ class Post extends Model
 
     public function subCategories(){
         // リレーションの定義
+        return $this->belongsToMany('App\Models\Categories\SubCategory', 'post_sub_categories', 'post_id', 'sub_category_id');
     }
 
     // コメント数
@@ -32,6 +34,7 @@ class Post extends Model
         return Post::with('postComments')->find($post_id)->postComments();
     }
 
+    // いいね数
     public function likes(){
         return $this->hasMany(Like::class, 'like_post_id');
     }
