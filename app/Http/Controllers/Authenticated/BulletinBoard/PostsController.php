@@ -57,14 +57,18 @@ class PostsController extends Controller
             'post' => $request->post_body,
         ]);
         // サブカテゴリーの ID を取得
-    $subCategoryId = $request->sub_category_id;
-
-    // ポストとサブカテゴリーの中間テーブルに保存
-    $post->subCategories()->attach($subCategoryId);
+        $subCategoryId = $request->sub_category_id;
+        // ポストとサブカテゴリーの中間テーブルに保存
+        $post->subCategories()->attach($subCategoryId);
         return redirect()->route('post.show');
     }
 
-    public function postEdit(PostFormRequest $request){
+    public function postEdit(Request $request){
+        $request->validate([
+        'post_title' => 'required|string|max:100',
+            'post_body' => 'required|string|max:5000',
+        ]);
+
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
             'post' => $request->post_body,
@@ -86,7 +90,6 @@ class PostsController extends Controller
         $request->validate([
           'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category',
         ]);
-
         SubCategory::create([
             'sub_category' => $request->sub_category_name,
             'main_category_id' => $request->main_category_id,
@@ -98,7 +101,6 @@ class PostsController extends Controller
         $request->validate([
             'comment' => 'required|string|max:2500',
         ]);
-
         PostComment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),

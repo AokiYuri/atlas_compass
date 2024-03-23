@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterFormController;
 use DB;
 
 use App\Models\Users\Subjects;
@@ -79,13 +80,23 @@ class RegisterController extends Controller
                 'role' => $request->role,
                 'password' => bcrypt($request->password)
             ]);
+
             $user = User::findOrFail($user_get->id);
             $user->subjects()->attach($subjects);
+
             DB::commit();
-            return view('auth.login.login');
-        }catch(\Exception $e){
-            DB::rollback();
-            return redirect()->route('loginView');
+          return view('auth.login.login');
+        } catch (\Exception $e) {
+          // 例外発生時にエラーログを出力
+          if ($e instanceof \Illuminate\Validation\ValidationException) {
+          \Log::error($e->validator->errors());
+          } else {
+          \Log::error($e->getMessage());
+          }
+
+          DB::rollback();
+          return redirect()->route('loginView');
         }
     }
+
 }
