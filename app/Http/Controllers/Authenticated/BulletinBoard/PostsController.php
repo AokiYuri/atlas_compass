@@ -21,9 +21,15 @@ class PostsController extends Controller
         $like = new Like;
         $post_comment = new Post;
         if(!empty($request->keyword)){
-            $posts = Post::with('user', 'postComments')
-            ->where('post_title', 'like', '%'.$request->keyword.'%')
-            ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
+            $keyword = $request->keyword;
+            $posts = Post::with('user', 'postComments', 'subCategories')
+            ->where(function ($query) use ($keyword) {
+            $query->where('post_title', 'like', '%'.$keyword.'%')
+              ->orWhere('post', 'like', '%'.$keyword.'%');
+            })
+            ->orWhereHas('subCategories', function ($q) use ($keyword) {
+                $q->where('sub_category', 'like', '%' . $keyword . '%');
+            })->get();
         }else if($request->category_word){
             $sub_category = $request->category_word;
             $posts = Post::with('user', 'postComments')->get();
@@ -34,6 +40,15 @@ class PostsController extends Controller
         }else if($request->my_posts){
             $posts = Post::with('user', 'postComments')
             ->where('user_id', Auth::id())->get();
+        }else if($request->categories_posts){
+            $keyword = $request->keyword;
+            // dd($request);
+            $categories_posts = $request->categories_posts;
+            // dd($categories_posts);
+            $posts = Post::with('user', 'postComments')
+            ->whereHas('subCategories', function($q) use ($categories_posts,$keyword){
+              $q->where('sub_categories.sub_category', $categories_posts);
+            }) ->get();
         }
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
