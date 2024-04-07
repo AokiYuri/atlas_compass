@@ -47,8 +47,8 @@
         @if($user->role == 4)
         <span>選択科目 :</span>
           @foreach($user->subjects as $subject)
-        <span>{{ $subject->subject }}</span>
-        @endforeach
+            <span>{{ $subject->subject }}</span>
+          @endforeach
         @endif
       </div>
     </div>
@@ -74,7 +74,7 @@
         </select>
       </div>
       <div class="">
-        <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
+        <p class="m-0 search_conditions"><span>検索条件の追加</span><i class="arrow">&#x25BC;</i></p>
         <div class="search_conditions_inner">
           <div>
             <label>性別</label>
@@ -94,6 +94,9 @@
           </div>
           <div class="selected_engineer">
             <label>選択科目</label>
+            <span>国語</span><input type="radio" name="subject" value="1" form="userSearchRequest">
+            <span>数学</span><input type="radio" name="subject" value="2" form="userSearchRequest">
+            <span>英語</span><input type="radio" name="subject" value="3" form="userSearchRequest">
           </div>
         </div>
       </div>
