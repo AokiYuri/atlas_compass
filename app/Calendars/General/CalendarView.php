@@ -66,7 +66,11 @@ class CalendarView{
           }else{
             $reserveId = $day->authReserveDate($day->everyDay())->first()->id;
             // 未来日付で予約をした場合
-            $html[] = '<button type="submit" class="cancel-modal-open btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" data-reserve-id="'. $reserveId .'">'. $reservePart .'</button>';
+            $html[] = '<button type="submit" class="cancel-modal-open btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px"
+            value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'"
+            data-reserve-part="'. $reservePart .'"
+            data-reserve-date="'. $day->everyDay() .'"
+            data-reserve-id="' .$reserveId. '">'. $reservePart .'</button>';
 
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }

@@ -18,11 +18,17 @@
 
 <!-- モーダル -->
 <div id="cancelModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>予約をキャンセルしますか？</p>
-    <button id="confirmCancel">キャンセルする</button>
-  </div>
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>予約をキャンセルしますか？</p>
+        <p>日付: <span class="modal-reserve-date"></span></p>
+        <p>部分: <span class="modal-reserve-part"></span></p>
+        <form action="{{ route('deleteParts') }}" method="post">
+            @csrf
+            <input type="hidden" name="reserve_id" id="modalReserveId">
+            <button type="submit" class="btn btn-danger">キャンセルする</button>
+        </form>
+    </div>
 </div>
 
 <style>
