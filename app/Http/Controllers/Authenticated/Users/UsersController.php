@@ -24,11 +24,7 @@ class UsersController extends Controller
         $userFactory = new SearchResultFactories();
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
         //dd($users->pluck('subjects'));
-        $subjects = [
-          ['id' => 1, 'name' => '国語'],
-          ['id' => 2, 'name' => '数学'],
-          ['id' => 3, 'name' => '英語']
-        ];
+        $subjects = Subjects::all();
         //dd($subjects);
         return view('authenticated.users.search', compact('users', 'subjects'));
     }
