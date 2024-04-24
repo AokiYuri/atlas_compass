@@ -96,7 +96,7 @@
             <label>選択科目</label>
             @foreach ($subjects as $subject)
               <span>{{ $subject->subject }}</span>
-              <input type="radio" name="subject" value="{{ $subject['id'] }}" form="userSearchRequest">
+              <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
             @endforeach
           </div>
         </div>
