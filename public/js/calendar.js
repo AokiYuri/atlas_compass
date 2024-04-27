@@ -5,7 +5,7 @@ $(function () {
 document.addEventListener('DOMContentLoaded', function () {
   var modal = document.getElementById('cancelModal');
   var btns = document.querySelectorAll('.cancel-modal-open');
-  var closeBtn = document.querySelector('.close');
+  var closeBtn = document.querySelector('.btn-close');
 
   btns.forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('modalReserveId').value = reserveId;
       document.querySelector('#cancelModal .modal-reserve-date').textContent = reserveDate;
       document.querySelector('#cancelModal .modal-reserve-part').textContent = reservePart;
-
       modal.style.display = 'block';
     });
   });

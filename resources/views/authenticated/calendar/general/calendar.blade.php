@@ -19,22 +19,22 @@
 <!-- モーダル -->
 <div id="cancelModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
         <p>予約をキャンセルしますか？</p>
         <p>日付: <span class="modal-reserve-date"></span></p>
-        <p>部分: <span class="modal-reserve-part"></span></p>
+        <p>時間: <span class="modal-reserve-part"></span></p>
         <form action="{{ route('deleteParts') }}" method="post">
             @csrf
             <input type="hidden" name="reserve_id" id="modalReserveId">
+            <button type="button" class="btn btn-close">閉じる</button>
             <button type="submit" class="btn btn-danger">キャンセルする</button>
         </form>
     </div>
 </div>
 
 <style>
-  .modal { display: none; /* Hidden by default */ position: fixed; /* Stay in place */ z-index: 1; /* Sit on top */ left: 0; top: 0; width: 100%; /* Full width */ height: 100%; /* Full height */ overflow: auto; /* Enable scroll if needed */ background-color: rgb(0,0,0); /* Fallback color */ background-color: rgba(0,0,0,0.4); /* Black w/ opacity */ }
-  .modal-content { background-color: #fefefe; margin: 15% auto; /* 15% from the top and centered */ padding: 20px; border: 1px solid #888; width: 80%; /* Could be more or less, depending on screen size */ }
-  .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
-  .close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; }
+  .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4); }
+  .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; }
+  .btn-close { background-color: #007bff; color: white; border-color: #007bff; }
+  .btn-close:hover { background-color: #007bff; color: white; border-color: #007bff; } /* ホバー時もスタイルが変わらないようにする */
 </style>
 @endsection
