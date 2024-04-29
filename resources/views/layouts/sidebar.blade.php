@@ -19,16 +19,16 @@
   <div class="d-flex">
     <div class="sidebar">
       @section('sidebar')
-      <p><a href="{{ route('top.show') }}">トップ</a></p>
-      <p><a href="/logout">ログアウト</a></p>
-      <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+      <p><img src="{{ asset('image/マイページ.png') }}" class="menu-icon"><a href="{{ route('top.show') }}">マイページ</a></p>
+      <p><img src="{{ asset('image/ログアウト.png') }}" class="menu-icon"><a href="/logout">ログアウト</a></p>
+      <p><img src="{{ asset('image/予約.png') }}" class="menu-icon"><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
       {{-- 講師権限の場合のみ表示 --}}
         @if(in_array(Auth::user()->role, [1, 2, 3]))
-      <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-      <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+      <p><img src="{{ asset('image/予約確認.png') }}" class="menu-icon"><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
+      <p><img src="{{ asset('image/枠登録.png') }}" class="menu-icon"><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
         @endif
-      <p><a href="{{ route('post.show') }}">掲示板</a></p>
-      <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+      <p><img src="{{ asset('image/掲示板.png') }}" class="menu-icon"><a href="{{ route('post.show') }}">掲示板</a></p>
+      <p><img src="{{ asset('image/検索.png') }}" class="menu-icon"><a href="{{ route('user.show') }}">ユーザー検索</a></p>
       @show
     </div>
     <div class="main-container">

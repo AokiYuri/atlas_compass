@@ -49,15 +49,15 @@
       <!-- サブカテゴリー追加 -->
       <p class="m-0">サブカテゴリー</p>
       <!-- バリデーションのエラー表示 -->
-         @foreach ($errors->all() as $error)
-         <li>{{$error}}</li>
-         @endforeach
+      @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+      @endforeach
       <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">
         {{ csrf_field() }}
         <select name="main_category_id" class="w-100">
-        @foreach($main_categories as $main_category)
-        <option value="{{ $main_category->id }}">{{ $main_category->main_category }}</option>
-        @endforeach
+          @foreach($main_categories as $main_category)
+            <option value="{{ $main_category->id }}">{{ $main_category->main_category }}</option>
+          @endforeach
         </select>
         <input type="text" class="w-100" name="sub_category_name">
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0">

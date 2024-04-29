@@ -16,16 +16,29 @@ li {
   list-style: none;
 }
 
+.title-icon {
+  width: 120px;
+  margin: auto;
+  display: flex;
+}
+
 /* サイドバー */
 .sidebar {
-  width: 150px;
+  width: 200px;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
+  padding-left: 5px;
+  padding-top: 15px;
 }
 
 .main-container {
   width: 100%;
+}
+
+.menu-icon {
+  width: 20%;
+  padding-right: 10px;
 }
 
 .sidebar p a {
@@ -135,6 +148,10 @@ li {
   justify-content: space-between;
 }
 
+.post_status {
+  margin: 0 0 0 auto;
+}
+
 .like_btn,
 .un_like_btn {
   cursor: pointer;
@@ -148,6 +165,19 @@ li {
 .error_message {
   font-size: 12px;
   color: red;
+}
+
+.post_btn {
+  border-radius: 5px;
+  padding: 0 5px;
+  background: #03AAD2;
+  text-align: center;
+}
+
+.post_btn a {
+  font-size: 12px;
+  color: #FFF;
+  text-align: center;
 }
 
 /* 掲示板 詳細画面 */
@@ -173,6 +203,22 @@ li {
 
 .edit-modal-open {
   cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background: #1E90FF;
+  color: #FFF;
+  font-size: 13px;
+  text-align: center;
+}
+
+.post_delete_btn {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background: #FF0000;
+  color: #FFF;
+  font-size: 13px;
+  text-align: center;
 }
 
 .modal-inner-body textarea {
@@ -226,15 +272,40 @@ li {
   font-size: 12px;
   border-radius: 5px;
   padding: 0 5px;
-  border: none;
-  background: #999;
+  background: #03AAD2;
   color: #FFF;
+  display: inline-block;
+  text-align: center;
+  border: none;
+}
+
+.category_btn_good {
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  background: #FF69B4;
+  color: #FFF;
+  border: none;
+}
+
+.category_btn_mine {
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background: #FFA500;
+  color: #FFF;
+  border: none;
 }
 
 .main_categories span,
 .sub_categories li input {
   list-style: none;
   cursor: pointer;
+}
+
+.w-100 {
+  margin-bottom: 10px;
 }
 
 /* ユーザー検索 */
@@ -276,4 +347,22 @@ li {
 
 .subject_inner {
   display: none;
+}
+
+.search_btn {
+  color: #FFF;
+  font-size: 12px;
+  border-radius: 5px;
+  border: none;
+  padding: 6px 10px;
+  background: #03AAD2;
+  text-align: center;
+}
+
+.search_post {
+  margin-top: 10px;
+}
+
+.search_form {
+  margin-top: 20px;
 }

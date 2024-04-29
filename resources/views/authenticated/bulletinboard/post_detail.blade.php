@@ -10,7 +10,7 @@
           <div>
             @if(auth()->check() && $post->user_id === auth()->user()->id)
               <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-              <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
+              <a href="{{ route('post.delete', ['id' => $post->id]) }}" class="post_delete_btn" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">削除</a>
             @endif
           </div>
         </div>
