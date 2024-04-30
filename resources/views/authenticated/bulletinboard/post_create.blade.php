@@ -41,6 +41,9 @@
   <div class="w-25 ml-auto mr-auto">
     <div class="category_area mt-5 p-5">
       <div class="">
+        @if ($errors->first('main_category_name'))
+          <li>{{$errors->first('main_category_name')}}</li>
+        @endif
         <p class="m-0">メインカテゴリー</p>
         <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
@@ -49,9 +52,9 @@
       <!-- サブカテゴリー追加 -->
       <p class="m-0">サブカテゴリー</p>
       <!-- バリデーションのエラー表示 -->
-      @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
-      @endforeach
+      @if ($errors->first('sub_category_name'))
+        <li>{{$errors->first('sub_category_name')}}</li>
+      @endif
       <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">
         {{ csrf_field() }}
         <select name="main_category_id" class="w-100">
