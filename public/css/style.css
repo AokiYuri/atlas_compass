@@ -366,3 +366,49 @@ li {
 .search_form {
   margin-top: 20px;
 }
+
+.reserve_users_area {
+  background-color: #EEEEEE;
+}
+
+.one_person {
+  margin: 5px;
+  border-radius: 10px;
+  background-color: #FFF;
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+/* Calendar */
+.day_part {
+  display: -webkit-flex;
+  -webkit-justify-content: space-around;
+}
+
+.table-center {
+  background-color: #03AAD2;
+  color: white;
+  text-align: center;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+.table_detail {
+  color: #000000;
+  border-bottom: 1px solid #dee2e6;
+  /* 下境界線を追加 */
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
+
+/* 偶数行の背景色をライトグリーンに設定 */
+tr:nth-child(even) .table_detail {
+  background-color: #CCFFFF;
+}
+
+/* 奇数行の背景色をホワイトに設定 */
+tr:nth-child(odd) .table_detail {
+  background-color: white;
+}
