@@ -65,9 +65,31 @@ $(function () {
 
 });
 
-function toggleSubCategories(category) {
-  const subCategories = category.nextElementSibling;
-  const icon = category.querySelector('.icon');
-  subCategories.style.display = subCategories.style.display === 'none' ? 'block' : 'none';
-  icon.textContent = subCategories.style.display === 'block' ? '▲' : '▼';
-}
+$(function () {
+  $('.category-header').click(function () {
+    const subCategories = $(this).next('.sub-categories');
+    if (!subCategories.is(':visible')) {
+      // すでに表示されていない場合にのみ、`active` クラスを追加
+      $(this).addClass('active');
+    }
+    // サブカテゴリーの表示を切り替え
+    subCategories.slideToggle(400, function () {
+      // スライドトグル完了後のコールバックで、閉じたかどうかを判断
+      if (!$(this).is(':visible')) {
+        // 閉じられていれば、`active` クラスを削除
+        $(this).prev('.category-header').removeClass('active');
+      }
+    });
+
+    // 矢印のクラスを切り替える
+    $(this).find('.arrow').toggleClass('up down');
+
+    // 矢印の表示を切り替える（オプショナル）
+    if ($(this).find('.arrow').hasClass('up')) {
+      $(this).find('.arrow').html('&#x25B2;'); // 上向き矢印に変更
+    } else {
+      $(this).find('.arrow').html('&#x25BC;'); // 下向き矢印に戻す
+    }
+  });
+
+});
