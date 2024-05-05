@@ -47,7 +47,7 @@
       <div class="comment_area p-3">
         <!-- バリデーションのエラー表示 -->
           @foreach ($errors->all() as $error)
-          <li>{{$error}}</li>
+          <li class="error_message">{{$error}}</li>
           @endforeach
         <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>

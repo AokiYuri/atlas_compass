@@ -79,11 +79,16 @@ class PostsController extends Controller
     }
 
     public function postEdit(Request $request){
+        $messages = [
+            'post_title.required' => 'タイトルは入力必須です。',
+            'post_title.max' => 'タイトルは100文字以内で入力してください。',
+            'post_body.required' => '投稿内容は入力必須です。',
+            'post_body.max' => '最大文字数は5000文字です。',
+        ];
         $request->validate([
-        'post_title' => 'required|string|max:100',
+            'post_title' => 'required|string|max:100',
             'post_body' => 'required|string|max:5000',
-        ]);
-
+        ], $messages);
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
             'post' => $request->post_body,
@@ -97,17 +102,27 @@ class PostsController extends Controller
     }
 
     public function mainCategoryCreate(Request $request){
+        $messages = [
+            'main_category_name.required' => 'メインカテゴリ名は必須項目です。',
+            'main_category_name.max' => 'メインカテゴリ名は100文字以内で入力してください。',
+            'main_category_name.unique' => '指定されたメインカテゴリ名は既に存在しています。',
+        ];
         $request->validate([
-          'main_category_name' => 'required|string|max:100|unique:main_categories,main_category',
-        ]);
+            'main_category_name' => 'required|string|max:100|unique:main_categories,main_category',
+        ], $messages);
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');
     }
 
     public function subCategoryCreate(Request $request){
+        $messages = [
+            'sub_category_name.required' => 'サブカテゴリ名は必須項目です。',
+            'sub_category_name.max' => 'サブカテゴリ名は100文字以内で入力してくだ さい。',
+            'sub_category_name.unique' => '指定されたサブカテゴリ名は既に存在しています。',
+        ];
         $request->validate([
-          'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category',
-        ]);
+            'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category',
+        ], $messages);
         SubCategory::create([
             'sub_category' => $request->sub_category_name,
             'main_category_id' => $request->main_category_id,
@@ -116,9 +131,14 @@ class PostsController extends Controller
     }
 
     public function commentCreate(Request $request){
+        $messages = [
+            'comment.required' => 'コメントは必須項目です。',
+            'comment.max' => 'コメントは2500文字以内で入力してください。',
+        ];
+
         $request->validate([
             'comment' => 'required|string|max:2500',
-        ]);
+        ], $messages);
         PostComment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),

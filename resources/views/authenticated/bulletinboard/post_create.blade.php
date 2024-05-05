@@ -42,7 +42,7 @@
     <div class="category_area mt-5 p-5">
       <div class="">
         @if ($errors->first('main_category_name'))
-          <li>{{$errors->first('main_category_name')}}</li>
+          <li class="error_message">{{$errors->first('main_category_name')}}</li>
         @endif
         <p class="m-0">メインカテゴリー</p>
         <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
@@ -53,7 +53,7 @@
       <p class="m-0">サブカテゴリー</p>
       <!-- バリデーションのエラー表示 -->
       @if ($errors->first('sub_category_name'))
-        <li>{{$errors->first('sub_category_name')}}</li>
+        <li class="error_message">{{$errors->first('sub_category_name')}}</li>
       @endif
       <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">
         {{ csrf_field() }}
