@@ -191,7 +191,7 @@ li {
 
 .post_btn {
   border-radius: 5px;
-  padding: 0 5px;
+  padding: 5px 5px;
   background: #03AAD2;
   text-align: center;
 }
@@ -200,6 +200,7 @@ li {
   font-size: 12px;
   color: #FFF;
   text-align: center;
+  display: block;
 }
 
 .search_words {
