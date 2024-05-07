@@ -16,6 +16,11 @@ $(function () {
     }
   });
 
+  // 中の選択肢がクリックされた時のイベント伝播を防止
+  $('.search_conditions_inner input, .search_conditions_inner select').click(function (event) {
+    event.stopPropagation();
+  });
+
   $('.subject_edit_btn').click(function () {
     // この部分で内容の表示/非表示を切り替え
     $(this).next('.subject_inner').slideToggle();
