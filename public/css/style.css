@@ -42,21 +42,25 @@ li {
 
 /* サイドバー */
 .sidebar {
-  width: 200px;
+  width: 180px;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
   padding-left: 5px;
   padding-top: 15px;
+  position: fixed;
 }
 
 .main-container {
-  width: 100%;
+  margin-left: 180px;
+  width: calc(100% - 150px);
+  /* 追加: 全体の幅からサイドバーの幅を引いた幅を設定 */
 }
 
 .menu-icon {
   width: 20%;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .sidebar p a {
@@ -430,14 +434,13 @@ li {
   margin-top: 30px;
 }
 
+.reset_btn_area {
+  margin: 15px 30px;
+}
+
 .reset_btn {
   color: #01ABD2;
-  font-size: 12px;
-  border-radius: 5px;
-  border: none;
-  padding: 6px 40px;
-  margin-top: 15px;
-  background-color: #ECF1F6;
+  font-size: 15px;
 }
 
 .search_post {
