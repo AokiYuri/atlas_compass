@@ -221,6 +221,7 @@ li {
   color: #FFF;
   border: none;
   font-size: 12px;
+  cursor: pointer;
 }
 
 .category-header.active p {
@@ -237,6 +238,7 @@ li {
   width: 50%;
   text-align: left;
   background-color: #ECF1F6;
+  cursor: pointer;
 }
 
 .sub-categories {
@@ -351,6 +353,7 @@ li {
   background: #FF69B4;
   color: #FFF;
   border: none;
+  cursor: pointer;
 }
 
 .category_btn_mine {
@@ -360,11 +363,15 @@ li {
   background: #FFA500;
   color: #FFF;
   border: none;
+  cursor: pointer;
 }
 
 .main_categories span,
 .sub_categories li input {
   list-style: none;
+}
+
+.main_categories_posts {
   cursor: pointer;
 }
 
@@ -432,6 +439,7 @@ li {
   background: #03AAD2;
   text-align: center;
   margin-top: 30px;
+  cursor: pointer;
 }
 
 .reset_btn_area {
